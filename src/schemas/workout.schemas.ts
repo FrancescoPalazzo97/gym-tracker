@@ -3,15 +3,17 @@ import { z } from '@/lib';
 //Warmup, Normal, DropSet, Failure
 const setTypes = ['W', 'N', 'D', 'F'];
 
+const SetSchema = z.array(z.object({
+    type: z.enum(setTypes),
+    reps: z.number(),
+    weight: z.number(),
+    completed: z.boolean()
+}))
+
 //Esercizio effettivo che fai durante allenamento
 const workoutExerciseSchema = z.object({
     exerciseId: z.uuid(),
-    sets: z.array(z.object({
-        type: z.enum(setTypes),
-        reps: z.number(),
-        weight: z.number(),
-        completed: z.boolean()
-    }))
+    sets: SetSchema
 })
 
 //Workout del giorno
