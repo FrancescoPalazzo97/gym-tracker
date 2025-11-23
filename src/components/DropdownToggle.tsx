@@ -18,6 +18,11 @@ export const DropdownToggle = ({ routine }: Props) => {
   const removeRoutine = store((s) => s.removeRoutine);
   const updateRoutine = store((s) => s.updateRoutine);
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
   const handleDelete = (e: React.MouseEvent) => {
     e.preventDefault();
     removeRoutine(routine.id);
@@ -29,7 +34,7 @@ export const DropdownToggle = ({ routine }: Props) => {
   }
 
   return (
-    <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+    <div onClick={handleClick}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon" aria-label="More Options">
@@ -39,13 +44,13 @@ export const DropdownToggle = ({ routine }: Props) => {
         <DropdownMenuContent align="end" className="w-52">
           <DropdownMenuItem onClick={handleUpdate}>
             <Pencil className="w-4 h-4 mr-2" />
-            Edit
+            Modifica
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={handleDelete}
             variant="destructive">
             <Trash2 className="w-4 h-4 mr-2" />
-            Delete
+            Elimina
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

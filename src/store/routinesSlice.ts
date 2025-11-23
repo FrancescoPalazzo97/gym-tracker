@@ -1,5 +1,5 @@
 import type { StateCreator } from "zustand";
-import type { Routine, TId, TStore } from "@/types";
+import type { Routine, TStore } from "@/types";
 
 type TRoutinesState = {
     routines: Routine[],
@@ -7,8 +7,8 @@ type TRoutinesState = {
 
 type TRoutinesActions = {
     addRoutine: (routine: Routine) => void,
-    removeRoutine: (id: TId) => void,
-    updateRoutine: (id: TId, routine: Routine) => void,
+    removeRoutine: (id: string) => void,
+    updateRoutine: (id: string, routine: Routine) => void,
 }
 
 export type TRoutinesSlice = TRoutinesState & TRoutinesActions;
@@ -28,11 +28,11 @@ export const createRoutinesSlice: StateCreator<
         set((s) => {
             s.routines.push(routine);
         }),
-    removeRoutine: (id: TId) =>
+    removeRoutine: (id) =>
         set((s) => {
             s.routines = s.routines.filter((routine) => routine.id !== id);
         }),
-    updateRoutine: (id: TId, routine: Routine) =>
+    updateRoutine: (id, routine) =>
         set((s) => {
             const index = s.routines.findIndex((r) => r.id === id);
             if (index !== -1) {
