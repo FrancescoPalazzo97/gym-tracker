@@ -1,9 +1,8 @@
 import { store } from "@/store";
-import type { TId } from "@/types";
 import { useParams } from "react-router-dom";
 
 const SingleRoutinePage = () => {
-    const { routineId } = useParams<TId>();
+    const { routineId } = useParams<string>();
     const routines = store((s) => s.routines);
     const selectedRoutine = routines.find(r => r.id === routineId);
     console.log(routineId)

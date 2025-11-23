@@ -1,12 +1,11 @@
 import { z } from '@/lib';
-import { idSchema, dateSchema } from './common.schemas';
 
 //Routine settimanale
 export const RoutineSchema = z.object({
-    id: idSchema,
+    id: z.uuid(),
     name: z.string(),
     exercisesIds: z.array(z.string()),
-    createdAt: dateSchema,
-    updatedAt: dateSchema
+    createdAt: z.date(),
+    updatedAt: z.date()
 })
 //Implemetare anche i massimali???
