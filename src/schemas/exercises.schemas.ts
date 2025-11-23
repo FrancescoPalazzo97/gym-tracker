@@ -17,6 +17,6 @@ export const exerciseSchema = z.object({
     unitName: z.enum(UNIT_NAMES),
     useTime: z.boolean(),
     sets: SetSchema,
-    createdAt: z.date,
-    updatedAt: z.date
+    createdAt: z.date(),
+    updatedAt: z.date()
 })
