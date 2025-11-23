@@ -19,7 +19,9 @@
     /* Path Alias */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
 
     /* Linting */
