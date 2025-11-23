@@ -1,8 +1,7 @@
 import { store } from "@/store";
-import { Button } from "@/components";
+import { Button, RoutineCard } from "@/components";
 import { createId } from "@/lib";
-import { PlusIcon, Trash2 } from "lucide-react";
-import RoutineCard from "@/components/RoutineCard";
+import { PlusIcon } from "lucide-react";
 
 export const AllRoutinesPage = () => {
 
@@ -11,9 +10,9 @@ export const AllRoutinesPage = () => {
 
     return (
         <div className="mx-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row items-center justify-between">
                 <Button
-                    className="my-4"
+                    className="my-4 "
                     size="lg"
                     onClick={() => addRoutine({ id: createId(), name: "New Routine", exercisesIds: [], createdAt: new Date(), updatedAt: new Date() })}
                 >
