@@ -1,3 +1,2 @@
-export * from './exercises.schemas'
-export * from './workout.schemas'
-export * from './routine.schemas'
+export * from './exercises.schemas';
+export * from './routine.schemas';
