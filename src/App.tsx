@@ -1,11 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AllRoutinesPage } from "@/pages";
 
 function App() {
 
   return (
     <>
-      <div className="text-2xl font-bold">
-        My Gym Tracker
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AllRoutinesPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
