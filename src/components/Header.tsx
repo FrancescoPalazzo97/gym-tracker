@@ -1,11 +1,17 @@
-import { ThemeToggle } from '@/components'
+import { ThemeToggle } from '@/components';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+    const navigate = useNavigate();
+
     return (
         <header>
             <nav className='relative my-4 flex items-center justify-center px-4'>
                 <div>
-                    <h1 className='text-3xl font-bold text-center'>
+                    <h1
+                        onClick={() => navigate('/')}
+                        className='text-3xl font-bold text-center'
+                    >
                         Gym Tracker
                     </h1>
                 </div>
