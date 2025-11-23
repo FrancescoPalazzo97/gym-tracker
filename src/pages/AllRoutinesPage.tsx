@@ -1,36 +1,37 @@
-import type { FC } from "react";
 import { store } from "@/store";
-import type { TId } from "@/types";
 import { Button } from "@/components";
-import { ThemeToggle } from "@/components";
+import { createId } from "@/lib";
 
-export const AllRoutinesPage: FC = () => {
+export const AllRoutinesPage = () => {
 
     const routines = store((s) => s.routines);
     const addRoutine = store((s) => s.addRoutine);
     const removeRoutine = store((s) => s.removeRoutine);
     const updateRoutine = store((s) => s.updateRoutine);
 
-    const newId = (): TId => {
-        const newUUID = crypto.randomUUID();
-        return newUUID as TId;
-    }
-
     return (
-        <div>
-            <ThemeToggle />
-            <Button>Ciaone</Button>
+        <div className="mx-4">
             <h1>My Gym Tracker</h1>
-            <button onClick={() => addRoutine({ id: newId(), name: "New Routine", exercisesIds: [], createdAt: new Date(), updatedAt: new Date() })}>Add Routine</button>
-            <ul>
-                {routines.map((routine) => (
-                    <li key={routine.id}>
-                        <h2>{routine.name}</h2>
-                        <button onClick={() => removeRoutine(routine.id)}>Delete</button>
-                        <button onClick={() => updateRoutine(routine.id, { ...routine, name: "New Name" })}>Update</button>
-                    </li>
-                ))}
-            </ul>
+            <Button
+                onClick={() => addRoutine({ id: createId(), name: "New Routine", exercisesIds: [], createdAt: new Date(), updatedAt: new Date() })}
+            >
+                Add Routine
+            </Button>
+            {routines.length === 0 && <p>No routines available.</p>}
+            {routines.length > 0 && (
+                <>
+                    <p>Total Routines: {routines.length}</p>
+                    <ul>
+                        {routines.map((routine) => (
+                            <li key={routine.id}>
+                                <h2>{routine.name}</h2>
+                                <Button onClick={() => removeRoutine(routine.id)}>Delete</Button>
+                                <Button onClick={() => updateRoutine(routine.id, { ...routine, name: "New Name" })}>Update</Button>
+                            </li>
+                        ))}
+                    </ul>
+                </>
+            )}
         </div>
     );
 }
