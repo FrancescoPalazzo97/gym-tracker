@@ -1,14 +1,10 @@
 import { store } from "@/store";
-import { Button, RoutineCard } from "@/components";
-import { createId } from "@/lib";
-import { PlusIcon } from "lucide-react";
+import { RoutineCard } from "@/components";
 import AddRoutineModal from "@/components/modals/AddRoutineModal";
-import { useRef } from "react";
 
 export const AllRoutinesPage = () => {
 
     const routines = store((s) => s.routines);
-    const addRoutine = store((s) => s.addRoutine);
 
     return (
         <div className="mx-4">
