@@ -2,6 +2,8 @@ import { store } from "@/store";
 import { Button, RoutineCard } from "@/components";
 import { createId } from "@/lib";
 import { PlusIcon } from "lucide-react";
+import AddRoutineModal from "@/components/modals/AddRoutineModal";
+import { useRef } from "react";
 
 export const AllRoutinesPage = () => {
 
@@ -11,14 +13,8 @@ export const AllRoutinesPage = () => {
     return (
         <div className="mx-4">
             <div className="flex flex-col md:flex-row items-center justify-between">
-                <Button
-                    className="my-4 "
-                    size="lg"
-                    onClick={() => addRoutine({ id: createId(), name: "New Routine", exercisesIds: [], createdAt: new Date(), updatedAt: new Date() })}
-                >
-                    <PlusIcon className="w-5 h-5 mr-2" />
-                    Aggiungi Routine
-                </Button>
+
+                <AddRoutineModal />
                 <p>Total Routines: {routines.length}</p>
             </div>
             {routines.length === 0 && (
